@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtNewMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="111dp"
+        android:text="Nova Partida"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnSaveMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="Salvar Turma" />
+
+
+    <EditText
+        android:id="@+id/editTextNameGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="152dp"
+        android:ems="10"
+        android:hint="Nome do Grupo"
+        android:inputType="text"
+        android:maxLength="30" />
+
+    <EditText
+        android:id="@+id/editTextDateMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="209dp"
+        android:ems="10"
+        android:hint="Data da Partida"
+        android:inputType="text"
+        android:maxLength="10" />
+
+    <EditText
+        android:id="@+id/editTextHourMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="266dp"
+        android:ems="10"
+        android:hint="Hora da Partida"
+        android:inputType="text"
+        android:maxLength="5" />
+
+</RelativeLayout>
