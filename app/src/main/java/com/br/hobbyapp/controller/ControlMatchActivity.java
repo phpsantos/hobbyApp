@@ -101,17 +101,17 @@ public class ControlMatchActivity extends Activity {
 
                 //Intent intentGoToMatchForm = new Intent(ControlMatchActivity.this, ControlFormActivity.class);
                 //startActivity(intentGoToMatchForm);
-                Toast.makeText(ControlMatchActivity.this, "TESTANDO BOTÃO", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ControlMatchActivity.this, "TESTANDO BOTÃO", Toast.LENGTH_SHORT).show();
 
                 try {
                     String retorno = new WebServiceConnection().execute().get();
                     Log.i("WebService Connection","Retorno: " + retorno.toString());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    Log.i("WebService Connection","PAU NO WEBSERVICE");
+                    Log.i("WebService Connection","Erro no retorno do WebService");
                 } catch (ExecutionException e) {
                     e.printStackTrace();
-                    Log.i("WebService Connection","PAU NO WEBSERVICE");
+                    Log.i("WebService Connection","Erro na execução do WebService");
                 }
             }
         });

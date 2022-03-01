@@ -31,7 +31,7 @@ public class WebServiceConnection extends AsyncTask<String, Void, String> {
             Scanner scanner = new Scanner(url.openStream());
             while (scanner.hasNext()) {
                 resposta.append(scanner.next());
-                Log.i("AsyncTask", "* --------------------------> Resultado: " + resposta.append(scanner.next()));
+                //Log.i("AsyncTask", "* --------------------------> Resultado: " + resposta.append(scanner.next()));
             }
         }catch (Exception  e){
             if (e != null)
