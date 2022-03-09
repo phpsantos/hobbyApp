@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.br.hobbyapp.R;
 import com.br.hobbyapp.model.Match;
+import com.br.hobbyapp.service.MixPanelService;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -28,36 +29,14 @@ import java.util.concurrent.ExecutionException;
 
 public class ControlMatchActivity extends Activity {
 
+    MixPanelService mixpanelService = new MixPanelService();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        if(isOnline(this)) {
-            //faz algo :)
-            Log.i("Internet Connection","Estou online");
-        }else{
-            Log.i("Internet Connection","NÃO Estou online");
-        }
-
-        // ------------------------------------------  //
-        // Token MixPanel
-        MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, "fe9adaa55d1ec68c6c4b64e2e2708415");
-        JSONObject props = new JSONObject();
-        try {
-            props.put("source", "Pat's affiliate site");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            props.put("param", "teste de evento do PH agora online");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        mixpanel.track("Test Event", props);
-        Log.i("MixPanel","acho que consegui enviar o event");
-        // ------------------------------------------  //
+        mixpanelService.track(this,"Event Test PH 2", "Lista de Turmas", "Testando evento" );
 
         // ------------------------------------------  //
         Intent intent = getIntent();
@@ -77,12 +56,6 @@ public class ControlMatchActivity extends Activity {
         match.setNm_group_match("Turma do PhZito");
         listaMatchs.add(match.getNm_group_match());
 
-        if (parametro != null){
-            Toast.makeText(this, "Mandei parametro", Toast.LENGTH_SHORT).show();
-            listaMatchs.add(matchParam.getNm_group_match());
-        }else{
-            Toast.makeText(this, "NÃO Mandei parametro", Toast.LENGTH_SHORT).show();
-        }
         // ------------------------------------------  //
 
         // ------------------------------------------  //
@@ -99,11 +72,11 @@ public class ControlMatchActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                //Intent intentGoToMatchForm = new Intent(ControlMatchActivity.this, ControlFormActivity.class);
-                //startActivity(intentGoToMatchForm);
-                //Toast.makeText(ControlMatchActivity.this, "TESTANDO BOTÃO", Toast.LENGTH_SHORT).show();
+                Intent intentGoToMatchForm = new Intent(ControlMatchActivity.this, ControlFormActivity.class);
+                startActivity(intentGoToMatchForm);
+                Toast.makeText(ControlMatchActivity.this, "TESTANDO BOTÃO", Toast.LENGTH_SHORT).show();
 
-                try {
+                /*try {
                     String retorno = new WebServiceConnection().execute().get();
                     Log.i("WebService Connection","Retorno: " + retorno.toString());
                 } catch (InterruptedException e) {
@@ -112,7 +85,7 @@ public class ControlMatchActivity extends Activity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                     Log.i("WebService Connection","Erro na execução do WebService");
-                }
+                }*/
             }
         });
         // ------------------------------------------  //

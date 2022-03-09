@@ -3,12 +3,16 @@ package com.br.hobbyapp.controller;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.br.hobbyapp.service.MixPanelService;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
 
 public class WebServiceConnection extends AsyncTask<String, Void, String> {
+
+
 
     @Override
     protected String doInBackground(String... strings) {
