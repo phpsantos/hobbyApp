@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public class WebServiceConnection extends AsyncTask<String, Void, String> {
 
-
-
     @Override
     protected String doInBackground(String... strings) {
 
@@ -22,7 +20,7 @@ public class WebServiceConnection extends AsyncTask<String, Void, String> {
         try {
             Log.i("AsyncTask", "# ------------- Executando Thread: " + Thread.currentThread().getName());
 
-            URL url = new URL("https://5e4c308ea641ed0014b0291f.mockapi.io/mockapi/user");
+            URL url = new URL("http://10.0.2.2:3000/matchs");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
@@ -35,11 +33,11 @@ public class WebServiceConnection extends AsyncTask<String, Void, String> {
             Scanner scanner = new Scanner(url.openStream());
             while (scanner.hasNext()) {
                 resposta.append(scanner.next());
-                //Log.i("AsyncTask", "* --------------------------> Resultado: " + resposta.append(scanner.next()));
+                Log.i("AsyncTask", "* --------------------------> Resultado: " + resposta.append(scanner.next()) + "fim");
             }
         }catch (Exception  e){
             if (e != null)
-            Log.i("AsyncTask", "* --------------------------> Erro na Conxão: " + e.getMessage());
+            Log.i("AsyncTask", "* --------------------------> Erro na Conxão 2: " + e.getMessage());
         }
         return resposta.toString();
     }

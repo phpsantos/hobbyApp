@@ -75,16 +75,16 @@ public class ControlMatchActivity extends Activity {
             }
         });
 
-        Button btnTeste = findViewById(R.id.btnMatch);
-        btnTeste.setOnClickListener(new View.OnClickListener() {
+        Button btnNewMatch = findViewById(R.id.btnMatch);
+        btnNewMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intentGoToMatchForm = new Intent(ControlMatchActivity.this, ControlFormActivity.class);
-                startActivity(intentGoToMatchForm);
+                //Intent intentGoToMatchForm = new Intent(ControlMatchActivity.this, ControlFormActivity.class);
+                //startActivity(intentGoToMatchForm);
                 Toast.makeText(ControlMatchActivity.this, "TESTANDO BOTÃO", Toast.LENGTH_SHORT).show();
 
-                /*try {
+                try {
                     String retorno = new WebServiceConnection().execute().get();
                     Log.i("WebService Connection","Retorno: " + retorno.toString());
                 } catch (InterruptedException e) {
@@ -93,7 +93,7 @@ public class ControlMatchActivity extends Activity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                     Log.i("WebService Connection","Erro na execução do WebService");
-                }*/
+                }
             }
         });
         // ------------------------------------------  //
