@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -36,6 +37,7 @@ public class ControlMatchActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
+        // Criação do evento no MixPanel
         mixpanelService.track(this,"Event Test PH 2", "Lista de Turmas", "Testando evento" );
 
         // ------------------------------------------  //
@@ -43,11 +45,12 @@ public class ControlMatchActivity extends Activity {
         //final Turma turma = (Turma) intent.getSerializableExtra("turma");
         final Match matchParam = (Match) intent.getSerializableExtra("match");
         final String parametro = (String) intent.getSerializableExtra("parametro");
+        Toast.makeText(ControlMatchActivity.this, "RETORNOU " + parametro, Toast.LENGTH_SHORT).show();
         // ------------------------------------------  //
 
         // ------------------------------------------  //
         ArrayList<String> listaMatchs = new ArrayList<String>();
-        Match match = new Match("Turma do japaNes","10/10/2010","14:00");
+        Match match = new Match();
 
         match.setNm_group_match("Turma do JapaNes");
         listaMatchs.add(match.getNm_group_match());
@@ -58,14 +61,19 @@ public class ControlMatchActivity extends Activity {
 
         // ------------------------------------------  //
 
-        // ------------------------------------------  //
-        // Dados da Turma.
-        //List<String> dataGroupsSchedule = new ArrayList<>(
-        //        Arrays.asList("Turma do Japa","Turma do Idon","turma do PH"));
-
         // Achando a Lista e Add no Componente da Tela.
         ListView groupScheduleList = findViewById(R.id.ListSchedule);
         groupScheduleList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaMatchs));
+
+        groupScheduleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ControlMatchActivity.this, "Clicou na Lista -  I vale:  " + i + " e L vale: " + l, Toast.LENGTH_SHORT).show();
+
+                Intent intentGoToDetailsMatch = new Intent(ControlMatchActivity.this,ControlMatchDetails.class);
+                startActivity(intentGoToDetailsMatch);
+            }
+        });
 
         Button btnTeste = findViewById(R.id.btnMatch);
         btnTeste.setOnClickListener(new View.OnClickListener() {

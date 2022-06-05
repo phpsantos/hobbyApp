@@ -45,6 +45,7 @@ public class ControlFormActivity extends Activity {
                 Intent intentGoToMatchControl = new Intent(ControlFormActivity.this,ControlMatchActivity.class);
                 intentGoToMatchControl.putExtra("parametro","S");
                 intentGoToMatchControl.putExtra("match",match);
+
                 startActivity(intentGoToMatchControl);
 
 
