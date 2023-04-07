@@ -1,5 +1,6 @@
 package com.br.hobbyapp.controller;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 public class WebServiceConnection extends AsyncTask<String, Void, String> {
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     protected String doInBackground(String... strings) {
 
@@ -34,8 +36,10 @@ public class WebServiceConnection extends AsyncTask<String, Void, String> {
                 Log.i("AsyncTask", "* --------------------------> Resultado: " + resposta.append(scanner.next()));
             }
         }catch (Exception  e){
-            if (e != null)
+            if (e.getMessage() != null)
             Log.i("AsyncTask", "* --------------------------> Erro na Conxão: " + e.getMessage());
+        } finally {
+
         }
         return resposta.toString();
     }
